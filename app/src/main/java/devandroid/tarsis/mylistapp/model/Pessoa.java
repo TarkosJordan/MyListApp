@@ -2,7 +2,7 @@ package devandroid.tarsis.mylistapp.model;
 
 public class Pessoa {
     private String primeiroNome;
-    private String sobreNome;
+    private String sobrenome;
     private String email;
     private String numeroTelefone;
 
@@ -16,11 +16,11 @@ public class Pessoa {
     public void setPrimeiroNome(String primeiroNome){
         this.primeiroNome = primeiroNome;
     }
-    public String getSobreNome(){
-        return this.sobreNome;
+    public String getSobrenome(){
+        return this.sobrenome;
     }
-    public void setSobreNome(String sobreNome){
-        this.sobreNome = sobreNome;
+    public void setSobrenome(String sobrenome){
+        this.sobrenome = sobrenome;
     }
     public String getEmail(){
         return this.email;
@@ -39,7 +39,7 @@ public class Pessoa {
     public String toString() {
         return "Pessoa{" +
                 "primeiroNome='" + primeiroNome + '\'' +
-                ", sobreNome='" + sobreNome + '\'' +
+                ", sobreNome='" + sobrenome + '\'' +
                 ", email='" + email + '\'' +
                 ", numeroTelefone='" + numeroTelefone + '\'' +
                 '}';
