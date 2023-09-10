@@ -1,8 +1,10 @@
-package devandroid.tarsis.mylistapp;
+package devandroid.tarsis.mylistapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import devandroid.tarsis.mylistapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
