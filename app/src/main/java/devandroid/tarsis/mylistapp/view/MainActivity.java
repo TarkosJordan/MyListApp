@@ -3,6 +3,7 @@ package devandroid.tarsis.mylistapp.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import devandroid.tarsis.mylistapp.R;
 
@@ -20,5 +21,7 @@ public class MainActivity extends AppCompatActivity {
         pessoa.setSobreNome("Jordan");
         pessoa.setEmail("tarkos.jordan@gmail.com");
         pessoa.setNumeroTelefone("55-54-91321020");
+
+        Log.i("POOAndroid", pessoa.toString());
     }
 }
