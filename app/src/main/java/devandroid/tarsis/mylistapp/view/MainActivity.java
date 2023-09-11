@@ -2,6 +2,7 @@ package devandroid.tarsis.mylistapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,9 +12,11 @@ import android.widget.Toast;
 
 import devandroid.tarsis.mylistapp.R;
 
+import devandroid.tarsis.mylistapp.controller.PessoaController;
 import devandroid.tarsis.mylistapp.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+
 
     EditText editNome;
     EditText editSobrenome;
@@ -29,13 +32,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Pessoa pessoa = new Pessoa();
-        pessoa.setPrimeiroNome("Tarkos");
-        pessoa.setSobrenome("Jordan");
-        pessoa.setEmail("tarkos.jordan@gmail.com");
-        pessoa.setNumeroTelefone("55-54-91321020");
-
         Pessoa pessoaDoCadastro = new Pessoa();
+        PessoaController controller = new PessoaController(MainActivity.this);
+
+        controller.buscar(pessoaDoCadastro);
 
         editNome = findViewById(R.id.editNome);
         editSobrenome = findViewById(R.id.editSobrenome);
@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
         buttonFinalizar = findViewById(R.id.buttonFinalizar);
         buttonSalvar = findViewById(R.id.buttonSalvar);
 
-        editNome.setText(pessoa.getPrimeiroNome());
-        editSobrenome.setText(pessoa.getSobrenome());
-        editTelefone.setText(pessoa.getNumeroTelefone());
-        editEmail.setText(pessoa.getEmail());
+        editNome.setText(pessoaDoCadastro.getPrimeiroNome());
+        editSobrenome.setText(pessoaDoCadastro.getSobrenome());
+        editTelefone.setText(pessoaDoCadastro.getNumeroTelefone());
+        editEmail.setText(pessoaDoCadastro.getEmail());
 
         buttonLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 editSobrenome.setText("");
                 editEmail.setText("");
                 editTelefone.setText("");
+
+                controller.limpar();
             }
         });
 
@@ -78,9 +80,10 @@ public class MainActivity extends AppCompatActivity {
                 pessoaDoCadastro.setEmail(editEmail.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Salvo "+pessoaDoCadastro.toString(), Toast.LENGTH_LONG).show();
+                controller.salvar(pessoaDoCadastro);
             }
         });
 
-        Log.i("POOAndroid", pessoa.toString());
+        Log.i("POOAndroid", pessoaDoCadastro.toString());
     }
 }
